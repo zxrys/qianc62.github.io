@@ -1,230 +1,168 @@
-!(function($) {
-  "use strict";
+function reverseString(str) {
+    return str.split('').reverse().join('');
+}
 
-  // Hero typed
-  if ($('.typed').length) {
-    var typed_strings = $(".typed").data('typed-items');
-    typed_strings = typed_strings.split(',')
-    new Typed('.typed', {
-      strings: typed_strings,
-      loop: true,
-      typeSpeed: 100,
-      backSpeed: 50,
-      backDelay: 2000
+function copyEmail() {
+    var email = reverseString('26cnaiq') + '@' + reverseString('moc.liamg');
+    navigator.clipboard.writeText(email).then(function() {
+        // Update all copy tooltips
+        var tooltips = document.querySelectorAll('.copy-tooltip');
+        var emailContainers = document.querySelectorAll('.email-container');
+        
+        tooltips.forEach(function(tooltip, index) {
+            tooltip.innerHTML = '<i class="fa fa-clipboard"></i> Email Copied';
+            tooltip.style.visibility = 'visible';
+            tooltip.style.opacity = '0.9';
+            tooltip.style.color = '#4CAF50';
+            
+            // Hide tooltip after 2 seconds
+            setTimeout(function() {
+                // Remove hover behavior first
+                emailContainers[index].onmouseenter = null;
+                emailContainers[index].onmouseleave = null;
+                
+                // Disable transitions temporarily
+                tooltip.style.transition = 'none';
+                
+                tooltip.style.visibility = 'hidden';
+                tooltip.style.opacity = '0';
+                tooltip.innerHTML = '<i class="fa fa-mouse-pointer"></i> Click to Copy';
+                tooltip.style.color = 'rgba(255, 255, 255, 0.95)';
+                
+                // Force reflow
+                tooltip.offsetHeight;
+                
+                // Restore transitions
+                tooltip.style.transition = 'all 0.3s ease';
+                
+                // Reset the hover behavior
+                emailContainers[index].onmouseenter = function() {
+                    tooltip.style.removeProperty('visibility');
+                    tooltip.style.removeProperty('opacity');
+                };
+                emailContainers[index].onmouseleave = function() {
+                    tooltip.style.removeProperty('visibility');
+                    tooltip.style.removeProperty('opacity');
+                };
+            }, 2000);
+        });
+    }).catch(function(err) {
+        console.error('Failed to Copy: ', err);
     });
-  }
+}
 
-  // Smooth scroll for the navigation menu and links with .scrollto classes
-  $(document).on('click', '.nav-menu a, .scrollto', function(e) {
-    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-      e.preventDefault();
-      var target = $(this.hash);
-      if (target.length) {
+// Back to top button
+window.onscroll = function() {
+    scrollFunction();
+};
 
-        var scrollto = target.offset().top;
-
-        $('html, body').animate({
-          scrollTop: scrollto
-        }, 1500, 'easeInOutExpo');
-
-        if ($(this).parents('.nav-menu, .mobile-nav').length) {
-          $('.nav-menu .active, .mobile-nav .active').removeClass('active');
-          $(this).closest('li').addClass('active');
-        }
-
-        if ($('body').hasClass('mobile-nav-active')) {
-          $('body').removeClass('mobile-nav-active');
-          $('.mobile-nav-toggle i').toggleClass('icofont-navigation-menu icofont-close');
-        }
-        return false;
-      }
-    }
-  });
-
-  // Activate smooth scroll on page load with hash links in the url
-  $(document).ready(function() {
-    if (window.location.hash) {
-      var initial_nav = window.location.hash;
-      if ($(initial_nav).length) {
-        var scrollto = $(initial_nav).offset().top;
-        $('html, body').animate({
-          scrollTop: scrollto
-        }, 1500, 'easeInOutExpo');
-      }
-    }
-  });
-
-  $(document).on('click', '.mobile-nav-toggle', function(e) {
-    $('body').toggleClass('mobile-nav-active');
-    $('.mobile-nav-toggle i').toggleClass('icofont-navigation-menu icofont-close');
-  });
-
-  $(document).click(function(e) {
-    var container = $(".mobile-nav-toggle");
-    if (!container.is(e.target) && container.has(e.target).length === 0) {
-      if ($('body').hasClass('mobile-nav-active')) {
-        $('body').removeClass('mobile-nav-active');
-        $('.mobile-nav-toggle i').toggleClass('icofont-navigation-menu icofont-close');
-      }
-    }
-  });
-
-  // Navigation active state on scroll
-  var nav_sections = $('section');
-  var main_nav = $('.nav-menu, .mobile-nav');
-
-  $(window).on('scroll', function() {
-    var cur_pos = $(this).scrollTop() + 200;
-
-    nav_sections.each(function() {
-      var top = $(this).offset().top,
-        bottom = top + $(this).outerHeight();
-
-      if (cur_pos >= top && cur_pos <= bottom) {
-        if (cur_pos <= bottom) {
-          main_nav.find('li').removeClass('active');
-        }
-        main_nav.find('a[href="#' + $(this).attr('id') + '"]').parent('li').addClass('active');
-      }
-      if (cur_pos < 300) {
-        $(".nav-menu ul:first li:first").addClass('active');
-      }
-    });
-  });
-
-  // Back to top button
-  $(window).scroll(function() {
-    if ($(this).scrollTop() > 100) {
-      $('.back-to-top').fadeIn('slow');
+function scrollFunction() {
+    var button = document.getElementById("back-to-top");
+    if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+        button.style.display = "block";
+        // Add fade in effect
+        button.style.opacity = "1";
     } else {
-      $('.back-to-top').fadeOut('slow');
+        button.style.opacity = "0";
+        setTimeout(function() {
+            if (document.body.scrollTop <= 500 && document.documentElement.scrollTop <= 500) {
+                button.style.display = "none";
+            }
+        }, 300);
     }
-  });
+}
 
-  $('.back-to-top').click(function() {
-    $('html, body').animate({
-      scrollTop: 0
-    }, 1500, 'easeInOutExpo');
-    return false;
-  });
-
-  // jQuery counterUp
-  $('[data-toggle="counter-up"]').counterUp({
-    delay: 10,
-    time: 1000
-  });
-
-  // Skills section
-  $('.skills-content').waypoint(function() {
-    $('.progress .progress-bar').each(function() {
-      $(this).css("width", $(this).attr("aria-valuenow") + '%');
+// When the user clicks on the button, scroll to the top of the document
+document.getElementById("back-to-top").onclick = function() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
     });
-  }, {
-    offset: '80%'
-  });
+};
 
-  // Porfolio isotope and filter
-  $(window).on('load', function() {
-    var portfolioIsotope = $('.portfolio-container').isotope({
-      itemSelector: '.portfolio-item',
-      layoutMode: 'fitRows'
-    });
+// Add date formatting function
+function formatDate() {
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    
+    const now = new Date();
+    const dayName = days[now.getDay()];
+    const monthName = months[now.getMonth()];
+    const date = now.getDate();
+    const year = now.getFullYear();
+    
+    return `${dayName}, ${monthName} ${date}, ${year}`;
+}
 
-    $('#portfolio-flters li').on('click', function() {
-      $("#portfolio-flters li").removeClass('filter-active');
-      $(this).addClass('filter-active');
-
-      portfolioIsotope.isotope({
-        filter: $(this).data('filter')
-      });
-      aos_init();
-    });
-
-    // Initiate venobox (lightbox feature used in portofilo)
-    $(document).ready(function() {
-      $('.venobox').venobox();
-    });
-  });
-
-  // Testimonials carousel (uses the Owl Carousel library)
-  $(".testimonials-carousel").owlCarousel({
-    autoplay: true,
-    dots: true,
-    loop: true,
-    responsive: {
-      0: {
-        items: 1
-      },
-      768: {
-        items: 2
-      },
-      900: {
-        items: 2
-      }
+// Update date display
+function updateDate() {
+    const dateElement = document.getElementById('current-date');
+    if (dateElement) {
+        dateElement.textContent = formatDate();
     }
-  });
+}
 
-  // Portfolio details carousel
-  $(".portfolio-details-carousel").owlCarousel({
-    autoplay: true,
-    dots: true,
-    loop: true,
-    items: 1
-  });
+// Update the fetchWeather function
+async function fetchWeather() {
+    const OPENWEATHER_API_KEY = '21bef387d763aa965033bfdfa6ca621e'; 
+    const city = 'Shanghai';
+    
+    try {
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${OPENWEATHER_API_KEY}&units=metric`);
+        const data = await response.json();
+        
+        if (data.cod === 200) {
+            const temp = Math.round(data.main.temp);
+            const weatherIcon = getWeatherIcon(data.weather[0].main);
+            const weatherInfo = document.getElementById('weather-info');
+            const weatherDisplay = weatherInfo.querySelector('.weather-text');
+            weatherDisplay.innerHTML = `@${city},&nbsp;${temp}°C,&nbsp;<i class="fa ${weatherIcon}"></i>`;
+        }
+    } catch (error) {
+        console.error('Error fetching weather:', error);
+        const weatherInfo = document.getElementById('weather-info');
+        const weatherDisplay = weatherInfo.querySelector('span:last-child');
+        weatherDisplay.innerHTML = '<i class="fa fa-exclamation-circle"></i>';
+    }
+}
 
-  // Init AOS
-  function aos_init() {
-    AOS.init({
-      duration: 1000,
-      easing: "ease-in-out-back",
-      once: true
-    });
-  }
-  $(window).on('load', function() {
-    aos_init();
-  });
+function getWeatherIcon(weatherMain) {
+    const iconMap = {
+        'Clear': 'fa-sun-o',
+        'Clouds': 'fa-cloud',
+        'Rain': 'fa-tint',
+        'Snow': 'fa-snowflake-o',
+        'Thunderstorm': 'fa-bolt',
+        'Drizzle': 'fa-tint',
+        'Mist': 'fa-cloud',
+        'Smoke': 'fa-cloud',
+        'Haze': 'fa-cloud',
+        'Dust': 'fa-cloud',
+        'Fog': 'fa-cloud',
+        'Sand': 'fa-cloud',
+        'Ash': 'fa-cloud',
+        'Squall': 'fa-cloud',
+        'Tornado': 'fa-warning'
+    };
+    
+    return iconMap[weatherMain] || 'fa-cloud';
+}
 
-})(jQuery);
+// Update both date and weather on page load and periodically
+document.addEventListener('DOMContentLoaded', () => {
+    // Display email
+    const user = '26cnaiq';
+    const domain = 'moc.liamg';
+    const emailElement = document.querySelector('.email-text');
+    if (emailElement) {
+        emailElement.textContent = ' ' + reverseString(user) + '@' + reverseString(domain);
+    }
 
-
-/*console print*/
-console.log(
-  `%c                       
-                                ___________________________________________
-                                ___________________________________________
-                                < That's it You can Check my Code Here 😀>
-                                -------------------------------------------
-                                -------------------------------------------
-
- ______             __  __                    __            _______                                                       
- /      \           /  |/  |                  /  |          /       \                                                      
-/$$$$$$  |  ______  $$/ $$ |   __   ______   _$$ |_         $$$$$$$  |  ______   __    __                                  
-$$ \__$$/  /      \ /  |$$ |  /  | /      \ / $$   |        $$ |__$$ | /      \ /  |  /  |                                 
-$$      \  $$$$$$  |$$ |$$ |_/$$/  $$$$$$  |$$$$$$/         $$    $$< /$$$$$$  |$$ |  $$ |                                 
- $$$$$$  | /    $$ |$$ |$$   $$<   /    $$ |  $$ | __       $$$$$$$  |$$ |  $$ |$$ |  $$ |                                 
-/  \__$$ |/$$$$$$$ |$$ |$$$$$$  \ /$$$$$$$ |  $$ |/  |      $$ |  $$ |$$ \__$$ |$$ \__$$ |                                 
-$$    $$/ $$    $$ |$$ |$$ | $$  |$$    $$ |  $$  $$/       $$ |  $$ |$$    $$/ $$    $$ |                                 
- $$$$$$/   $$$$$$$/ $$/ $$/   $$/  $$$$$$$/    $$$$/        $$/   $$/  $$$$$$/   $$$$$$$ |                                 
-                                                                                /  \__$$ |                                 
-                                                                                $$    $$/                                  
-                                                                                 $$$$$$/                                                                                                                                             
-                                                                                                                           
- __       __            __              _______                                 __                                         
-/  |  _  /  |          /  |            /       \                               /  |                                        
-$$ | / \ $$ |  ______  $$ |____        $$$$$$$  |  ______   __     __  ______  $$ |  ______    ______    ______    ______  
-$$ |/$  \$$ | /      \ $$      \       $$ |  $$ | /      \ /  \   /  |/      \ $$ | /      \  /      \  /      \  /      \ 
-$$ /$$$  $$ |/$$$$$$  |$$$$$$$  |      $$ |  $$ |/$$$$$$  |$$  \ /$$//$$$$$$  |$$ |/$$$$$$  |/$$$$$$  |/$$$$$$  |/$$$$$$  |
-$$ $$/$$ $$ |$$    $$ |$$ |  $$ |      $$ |  $$ |$$    $$ | $$  /$$/ $$    $$ |$$ |$$ |  $$ |$$ |  $$ |$$    $$ |$$ |  $$/ 
-$$$$/  $$$$ |$$$$$$$$/ $$ |__$$ |      $$ |__$$ |$$$$$$$$/   $$ $$/  $$$$$$$$/ $$ |$$ \__$$ |$$ |__$$ |$$$$$$$$/ $$ |      
-$$$/    $$$ |$$       |$$    $$/       $$    $$/ $$       |   $$$/   $$       |$$ |$$    $$/ $$    $$/ $$       |$$ |      
-$$/      $$/  $$$$$$$/ $$$$$$$/        $$$$$$$/   $$$$$$$/     $/     $$$$$$$/ $$/  $$$$$$/  $$$$$$$/   $$$$$$$/ $$/       
-                                                                                             $$ |                          
-                                                                                             $$ |                          
-                                                                                             $$/                           
-           
-                                                                                        
-                                                                                        
-                                                                                        
-                                                                               `,
-  "font-family:monospace"
-);
+    // Update date and weather
+    updateDate();
+    fetchWeather();
+    setInterval(() => {
+        updateDate();
+        fetchWeather();
+    }, 600000);
+}); 

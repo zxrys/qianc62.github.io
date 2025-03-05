@@ -1,0 +1,282 @@
+.fa-file-pdf-o {
+    color: #f40f02;
+    transition: transform 0.1s ease;
+    position: relative;
+}
+
+.fa-github {
+    color: #0d47a1;
+    transition: transform 0.1s ease;
+    position: relative;
+}
+
+.fa-quote-left {
+    color: #4a148c;
+    transition: transform 0.1s ease;
+    cursor: pointer;
+    font-size: 0.8em;
+    position: relative;
+}
+
+.fa-external-link {
+    color: #1976D2;
+    transition: transform 0.1s ease;
+    position: relative;
+    font-size: 0.8em;
+}
+
+.fa-file-pdf-o:hover, .fa-github:hover, .fa-quote-left:hover, .fa-external-link:hover {
+    transform: scale(1.2);
+}
+
+.Publications ul li {
+    margin-bottom: 1.2em;
+}
+
+.Publications ul li p {
+    margin-bottom: 0;
+    line-height: 1.4;
+}
+
+.Publications ul li p strong {
+    line-height: 1.6;
+}
+
+.corresponding-author {
+    font-size: 0.7em;
+    vertical-align: super;
+    color: #666;
+}
+
+.copy-tooltip {
+    display: none;
+    position: absolute;
+    background: rgba(0,0,0,0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    z-index: 100;
+}
+
+.citation-container {
+    position: relative;
+    display: inline-block;
+}
+
+.citation-tooltip {
+    position: absolute;
+    background-color: rgba(33, 33, 33, 0.75);
+    color: rgba(255, 255, 255, 0.95);
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    left: calc(100% + 8px);
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    font-weight: 400;
+    letter-spacing: 0.2px;
+}
+
+.citation-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -3px;
+    transform: translateY(-50%) rotate(45deg);
+    width: 6px;
+    height: 6px;
+    background-color: inherit;
+}
+
+.citation-container:hover .citation-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) translateY(0);
+}
+
+.link-container {
+    position: relative;
+    display: inline-block;
+    margin: 0 2px;
+}
+
+.link-tooltip {
+    position: absolute;
+    background-color: rgba(33, 33, 33, 0.75);
+    color: rgba(255, 255, 255, 0.95);
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    left: calc(100% + 8px);
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    font-weight: 400;
+    letter-spacing: 0.2px;
+}
+
+.link-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -3px;
+    transform: translateY(-50%) rotate(45deg);
+    width: 6px;
+    height: 6px;
+    background-color: inherit;
+}
+
+.link-container:hover .link-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) translateY(0);
+}
+
+.project-buttons .github i.fa-github {
+    color: white;
+}
+
+.project-buttons .github:hover i.fa-github {
+    color: #0d47a1;
+}
+
+.project-buttons .github:hover {
+    background-color: white;
+    border-color: #0d47a1;
+}
+
+#contact-list .btn-default .fa-github {
+    color: #333;
+}
+
+#contact-list .btn-default:hover .fa-github {
+    color: white;
+}
+
+#contact-list .btn-default:hover {
+    background-color: #0d47a1;
+    border-color: #0d47a1;
+}
+
+/* Social media buttons hover effects */
+#contact-list .btn-default:hover {
+    color: white;
+}
+
+#contact-list .btn-default:hover .fa-twitter,
+#contact-list .btn-default:hover .fa-linkedin,
+#contact-list .btn-default:hover .fa-github,
+#contact-list .btn-default:hover .fa-graduation-cap {
+    color: white;
+}
+
+/* Brand background colors */
+#contact-list a[href*="x.com"]:hover {
+    background-color: #1DA1F2;
+    border-color: #1DA1F2;
+}
+
+#contact-list a[href*="linkedin"]:hover {
+    background-color: #0077B5;
+    border-color: #0077B5;
+}
+
+#contact-list a[href*="github"]:hover {
+    background-color: #0d47a1;
+    border-color: #0d47a1;
+}
+
+#contact-list a[href*="scholar.google"]:hover {
+    background-color: #4285F4;
+    border-color: #4285F4;
+}
+
+.email-container {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.email-tooltip {
+    position: absolute;
+    background-color: rgba(33, 33, 33, 0.75);
+    color: rgba(255, 255, 255, 0.95);
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    left: calc(100% + 8px);
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    font-weight: 400;
+    letter-spacing: 0.2px;
+}
+
+.email-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -3px;
+    transform: translateY(-50%) rotate(45deg);
+    width: 6px;
+    height: 6px;
+    background-color: inherit;
+}
+
+.email-tooltip:hover .email-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) translateY(0);
+}
+
+/* Academic Services Styling */
+.academic-services {
+    padding: 20px 0;
+}
+
+.year-section {
+    margin-bottom: 30px;
+    background: #fff;
+}
+
+/* Footer styles */
+.footer-content p {
+    margin-bottom: 0px;
+}
+
+.footer-content .globe-container {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+.footer-content a {
+    color: #666;
+    text-decoration: none;
+} 

@@ -1,0 +1,77 @@
+.invited-talks ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.invited-talks ul li {
+    margin-bottom: 0.5em;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.invited-talks ul li .talk-title-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+}
+
+.invited-talks ul li .talk-title {
+    font-weight: normal;
+    color: #333;
+}
+
+.invited-talks ul li .talk-info {
+    display: inline;
+    margin: 0;
+    color: #666;
+    font-size: 0.95em;
+    margin-left: 20pt;
+    white-space: nowrap;
+}
+
+.invited-talks ul li .role-tag {
+    font-size: 0.75em;
+    padding: 1px 4px;
+    border-radius: 2px;
+    font-weight: 500;
+    display: inline-block;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.invited-talks ul li .fa-link {
+    font-size: 0.8em;
+}
+
+.invited-talks .link-container {
+    position: relative;
+    display: inline-block;
+    margin: 0 2px;
+}
+
+.invited-talks .link-tooltip {
+    position: absolute;
+    background-color: rgba(33, 33, 33, 0.75);
+    color: rgba(255, 255, 255, 0.95);
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    left: calc(100% + 8px);
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    font-weight: 400;
+    letter-spacing: 0.2px;
+} 
