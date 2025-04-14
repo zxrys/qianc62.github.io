@@ -31,8 +31,8 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function handleApplication(element) {
-    const emailUser = '26cnaiq'.split('').reverse().join('');
-    const emailDomain = 'moc.liamg'.split('').reverse().join('');
+    const emailUser = 'cnaiq'.split('').reverse().join('');
+    const emailDomain = 'nc.ude.utjs'.split('').reverse().join('');
     const email = emailUser + '@' + emailDomain;
     const tooltip = element.querySelector('.apply-tooltip');
     

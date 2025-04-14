@@ -3,7 +3,7 @@ function reverseString(str) {
 }
 
 function copyEmail() {
-    var email = reverseString('26cnaiq') + '@' + reverseString('moc.liamg');
+    var email = reverseString('cnaiq') + '@' + reverseString('nc.ude.utjs');
     navigator.clipboard.writeText(email).then(function() {
         // Update all copy tooltips
         var tooltips = document.querySelectorAll('.copy-tooltip');
@@ -151,8 +151,8 @@ function getWeatherIcon(weatherMain) {
 // Update both date and weather on page load and periodically
 document.addEventListener('DOMContentLoaded', () => {
     // Display email
-    const user = '26cnaiq';
-    const domain = 'moc.liamg';
+    const user = 'cnaiq';
+    const domain = 'nc.ude.utjs';
     const emailElement = document.querySelector('.email-text');
     if (emailElement) {
         emailElement.textContent = ' ' + reverseString(user) + '@' + reverseString(domain);
