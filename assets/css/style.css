@@ -105,6 +105,9 @@ article .share .twitter:hover {
 #contact-list li:hover .fa-github {
 	color: #333333;
 }
+#contact-list li:hover .fa-book {
+	color: #FF2442;
+}
 #contact-list li:hover .fa-facebook {
 	color: #3b5998;
 }
@@ -590,6 +593,16 @@ p {
 .invited-talks ul li .talk-title [role="tag"].host {
     background-color: #F3E5F5;
     color: #6A1B9A;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-size: 0.75em;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.invited-talks ul li .talk-title [role="tag"].panelist {
+    background-color: #E1F5FE;
+    color: #0277BD;
     padding: 2px 4px;
     border-radius: 4px;
     font-size: 0.75em;

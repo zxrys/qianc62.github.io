@@ -168,7 +168,11 @@
 }
 
 #contact-list .btn-default:hover .fa-github {
-    color: white;
+    color: #333333;
+}
+
+#contact-list .btn-default:hover .fa-book {
+    color: #FF2442;
 }
 
 #contact-list .btn-default:hover {
@@ -184,6 +188,7 @@
 #contact-list .btn-default:hover .fa-twitter,
 #contact-list .btn-default:hover .fa-linkedin,
 #contact-list .btn-default:hover .fa-github,
+#contact-list .btn-default:hover .fa-book,
 #contact-list .btn-default:hover .fa-graduation-cap {
     color: white;
 }
