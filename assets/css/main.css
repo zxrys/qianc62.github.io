@@ -194,7 +194,7 @@ html, body {
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     padding: 20px;
-    max-height: 1370px;
+    max-height: 1200px;
     overflow-y: auto;
     overflow-x: hidden;
     box-sizing: border-box;
