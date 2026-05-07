@@ -468,9 +468,15 @@ p {
     max-width: 100%;
 }
 
-.News .timeline-content img.news-img-medium {
+.News .timeline-content img.news-img-medium,
+.News .timeline-content video.news-img-medium {
     width: 500px;
     max-width: 100%;
+}
+
+.News .timeline-content video.news-img-medium {
+    height: auto;
+    display: block;
 }
 
 .News .timeline-content img.news-img-large {
